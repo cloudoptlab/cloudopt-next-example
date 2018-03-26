@@ -12,6 +12,5 @@ net:
       jooq:
         pool: "net.cloudopt.next.jooq.pool.HikariCPPool"
         database: "mysql"
-        showSql: "true"
 
 

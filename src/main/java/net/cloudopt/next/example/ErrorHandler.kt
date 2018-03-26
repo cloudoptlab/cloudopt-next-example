@@ -15,7 +15,7 @@
  */
 package net.cloudopt.next.example
 
-import net.cloudopt.next.web.handler.Handler
+import net.cloudopt.next.web.handler.ErrorHandler
 import java.util.*
 
 /*
@@ -23,7 +23,7 @@ import java.util.*
  * @Time: 2018/2/26
  * @Description: Intercepting error requests
  */
-class ErrorHandler : Handler() {
+class ErrorHandler : ErrorHandler() {
 
 
     override fun handle() {

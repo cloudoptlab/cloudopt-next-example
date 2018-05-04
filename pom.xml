@@ -17,12 +17,6 @@
         </repository>
     </repositories>
 
-    <parent>
-        <artifactId>cloudopt-next-parent</artifactId>
-        <groupId>net.cloudopt.next</groupId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-
     <groupId>net.cloudopt.next</groupId>
     <artifactId>cloudopt-next-example</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -73,6 +67,7 @@
         <dependency>
             <groupId>net.cloudopt.next</groupId>
             <artifactId>cloudopt-next-web</artifactId>
+            <version>${cloudopt.next.version}</version>
         </dependency>
 
         <dependency>
@@ -84,6 +79,7 @@
         <dependency>
             <groupId>net.cloudopt.next</groupId>
             <artifactId>cloudopt-next-jooq</artifactId>
+            <version>${cloudopt.next.version}</version>
         </dependency>
 
         <dependency>
@@ -96,6 +92,7 @@
         <dependency>
             <groupId>net.cloudopt.next</groupId>
             <artifactId>cloudopt-next-redis</artifactId>
+            <version>${cloudopt.next.version}</version>
         </dependency>
 
     </dependencies>

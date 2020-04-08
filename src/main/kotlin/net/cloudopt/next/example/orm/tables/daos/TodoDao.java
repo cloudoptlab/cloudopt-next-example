@@ -47,7 +47,7 @@ public class TodoDao extends DAOImpl<TodoRecord, net.cloudopt.next.example.orm.t
      * {@inheritDoc}
      */
     @Override
-    protected Integer getId(net.cloudopt.next.example.orm.tables.pojos.Todo object) {
+    public Integer getId(net.cloudopt.next.example.orm.tables.pojos.Todo object) {
         return object.getId();
     }
 

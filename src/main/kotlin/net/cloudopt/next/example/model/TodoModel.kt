@@ -5,7 +5,7 @@ import net.cloudopt.next.example.orm.Tables
 import net.cloudopt.next.example.orm.tables.daos.TodoDao
 import net.cloudopt.next.example.orm.tables.pojos.Todo
 import net.cloudopt.next.jooq.Jooqer
-import net.cloudopt.next.web.json.Jsoner
+import net.cloudopt.next.json.Jsoner
 import java.sql.Date
 import java.sql.Timestamp
 

@@ -9,7 +9,7 @@
     <version>2.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Tideswing Pipelining</name>
+    <name>Cloudopt Next Example</name>
 
     <repositories>
         <repository>

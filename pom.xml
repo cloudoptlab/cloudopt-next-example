@@ -13,14 +13,8 @@
 
     <repositories>
         <repository>
-            <id>aliyun-jcenter</id>
-            <url>https://maven.aliyun.com/repository/jcenter</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <id>aliyun</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
         <repository>
             <id>cloudopt-center</id>
@@ -30,10 +24,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.3.70</kotlin.version>
+        <kotlin.version>1.4.0</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <junit.version>4.13.1</junit.version>
-        <cloudopt.version>2.0.2-BETA</cloudopt.version>
+        <jooq.version>3.14.4</jooq.version>
+        <cloudopt.version>3.0.0.0-BETA1</cloudopt.version>
     </properties>
 
     <dependencies>
@@ -71,6 +66,18 @@
         </dependency>
 
         <dependency>
+            <groupId>net.cloudopt.next</groupId>
+            <artifactId>cloudopt-next-validator</artifactId>
+            <version>${cloudopt.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>3.4.5</version>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.19</version>
@@ -79,14 +86,15 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
-            <version>3.13.1</version>
+            <version>${jooq.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-meta</artifactId>
-            <version>3.13.1</version>
+            <version>${jooq.version}</version>
         </dependency>
+
 
 
     </dependencies>
@@ -118,6 +126,17 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
             <!--JOOQ-->
             <plugin>
                 <groupId>org.jooq</groupId>
@@ -143,18 +162,21 @@
                         <driver>com.mysql.cj.jdbc.Driver</driver>
                         <url>jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</url>
                         <user>root</user>
-                        <password>CePm51I8rEaMCj9v</password>
+                        <password>root</password>
                     </jdbc>
                     <generator>
                         <database>
                             <name>org.jooq.meta.mysql.MySQLDatabase</name>
                             <includes>.*</includes>
-                            <inputSchema>tonight</inputSchema>
+                            <inputSchema>blog</inputSchema>
                         </database>
                         <target>
-                            <packageName>net.cloudopt.next.example</packageName>
-                            <directory>src/main/kotlin</directory>
+                            <packageName>net.cloudopt.next.example.model</packageName>
+                            <directory>src/main/kotlin/</directory>
                         </target>
+                        <generate>
+                            <pojos>true</pojos>
+                        </generate>
                     </generator>
                 </configuration>
             </plugin>

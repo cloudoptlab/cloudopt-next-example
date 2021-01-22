@@ -11,12 +11,12 @@ import net.cloudopt.next.web.Resource
  */
 class AllInterceptor : Interceptor {
 
-    override fun intercept(resource: Resource): Boolean {
+    override suspend fun intercept(resource: Resource): Boolean {
         println("Through the intercept!")
         return true
     }
 
-    override fun response(resource: Resource): Resource {
+    override suspend fun response(resource: Resource): Resource {
         return resource
     }
 

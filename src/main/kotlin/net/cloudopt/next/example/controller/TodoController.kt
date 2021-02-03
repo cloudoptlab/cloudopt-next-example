@@ -3,7 +3,6 @@ package net.cloudopt.next.example.controller
 import net.cloudopt.next.example.interceptor.AllInterceptor
 import net.cloudopt.next.example.service.TodoService
 import net.cloudopt.next.web.Resource
-import net.cloudopt.next.web.Worker.global
 import net.cloudopt.next.web.route.*
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min
@@ -26,19 +25,18 @@ class TodoController : Resource() {
     }
 
     @POST
-    fun post(
+    suspend fun post(
         @Parameter("text")
         @NotBlank
         text: String
     ) {
-        global{
-            todoService.addTodoList(text)
-            renderJson(result("success"))
-        }
+
+        todoService.addTodoList(text)
+        renderJson(result("success"))
     }
 
     @PUT("/:id")
-    fun put(
+    suspend fun put(
         @Parameter("id")
         @NotNull
         @Min(-1)
@@ -49,23 +47,19 @@ class TodoController : Resource() {
         @Max(2)
         state: Int
     ) {
-        global{
-            todoService.updateTodoList(id, state)
-            renderJson(result("success"))
-        }
+        todoService.updateTodoList(id, state)
+        renderJson(result("success"))
     }
 
     @DELETE("/:id")
-    fun delete(
+    suspend fun delete(
         @Parameter("id")
         @NotNull
         @Min(-1)
         id: Int
     ) {
-        global{
-            todoService.deleteTodoList(id)
-            renderJson(result("success"))
-        }
+        todoService.deleteTodoList(id)
+        renderJson(result("success"))
     }
 
     private fun result(any: Any): HashMap<String, Any> {

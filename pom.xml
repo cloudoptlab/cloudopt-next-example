@@ -13,10 +13,6 @@
 
     <repositories>
         <repository>
-            <id>aliyun</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
             <id>cloudopt-center</id>
             <url>https://dl.bintray.com/cloudopt/maven</url>
         </repository>
@@ -28,7 +24,7 @@
         <kotlin.code.style>official</kotlin.code.style>
         <junit.version>4.13.1</junit.version>
         <jooq.version>3.14.4</jooq.version>
-        <cloudopt.version>3.0.0.0-BETA1</cloudopt.version>
+        <cloudopt.version>3.0.0.0-BETA2</cloudopt.version>
     </properties>
 
     <dependencies>

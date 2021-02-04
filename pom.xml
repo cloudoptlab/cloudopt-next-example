@@ -24,7 +24,7 @@
         <kotlin.code.style>official</kotlin.code.style>
         <junit.version>4.13.1</junit.version>
         <jooq.version>3.14.4</jooq.version>
-        <cloudopt.version>3.0.0.0-BETA2</cloudopt.version>
+        <cloudopt.version>3.0.0.0-BETA3</cloudopt.version>
     </properties>
 
     <dependencies>

@@ -3,17 +3,13 @@ package net.cloudopt.next.example.controller
 import net.cloudopt.next.example.interceptor.AllInterceptor
 import net.cloudopt.next.example.service.TodoService
 import net.cloudopt.next.web.Resource
-import net.cloudopt.next.web.route.*
+import net.cloudopt.next.web.annotation.*
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
-/*
- * @author: Cloudopt
- * @Time: 2018/2/26
- * @Description: Test Case
- */
+
 @API("/api/v1/todo", interceptor = [AllInterceptor::class])
 class TodoController : Resource() {
 

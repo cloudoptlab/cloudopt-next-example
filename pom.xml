@@ -11,20 +11,13 @@
 
     <name>Cloudopt Next Example</name>
 
-    <repositories>
-        <repository>
-            <id>cloudopt-center</id>
-            <url>https://dl.bintray.com/cloudopt/maven</url>
-        </repository>
-    </repositories>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.4.0</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <junit.version>4.13.1</junit.version>
         <jooq.version>3.14.4</jooq.version>
-        <cloudopt.version>3.0.0.0-BETA3</cloudopt.version>
+        <cloudopt.version>3.0.0.1-RELEASE</cloudopt.version>
     </properties>
 
     <dependencies>
@@ -92,7 +85,6 @@
         </dependency>
 
 
-
     </dependencies>
 
     <build>
@@ -133,49 +125,97 @@
                 </configuration>
             </plugin>
 
-            <!--JOOQ-->
             <plugin>
-                <groupId>org.jooq</groupId>
-                <artifactId>jooq-codegen-maven</artifactId>
-                <version>3.13.1</version>
-                <executions>
-                    <execution>
-                        <id>jooq-codegen-maven</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.19</version>
-                    </dependency>
-                </dependencies>
+
+                <artifactId>maven-assembly-plugin</artifactId>
+
+                <version>3.1.0</version>
+
                 <configuration>
-                    <jdbc>
-                        <driver>com.mysql.cj.jdbc.Driver</driver>
-                        <url>jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</url>
-                        <user>root</user>
-                        <password>root</password>
-                    </jdbc>
-                    <generator>
-                        <database>
-                            <name>org.jooq.meta.mysql.MySQLDatabase</name>
-                            <includes>.*</includes>
-                            <inputSchema>blog</inputSchema>
-                        </database>
-                        <target>
-                            <packageName>net.cloudopt.next.example.model</packageName>
-                            <directory>src/main/kotlin/</directory>
-                        </target>
-                        <generate>
-                            <pojos>true</pojos>
-                        </generate>
-                    </generator>
+
+                    <finalName>cloudopt-demo</finalName>
+
+                    <archive>
+
+                        <manifest>
+
+                            <mainClass>net.cloudopt.demo.AppKt</mainClass>
+
+                        </manifest>
+
+                    </archive>
+
+                    <descriptorRefs>
+
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+
+                    </descriptorRefs>
+
                 </configuration>
+
+                <executions>
+
+                    <execution>
+
+                        <id>make-assembly</id>
+
+                        <phase>package</phase>
+
+                        <goals>
+
+                            <goal>single</goal>
+
+                        </goals>
+
+                    </execution>
+
+                </executions>
+
             </plugin>
+
+            <!--JOOQ-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.jooq</groupId>-->
+            <!--                <artifactId>jooq-codegen-maven</artifactId>-->
+            <!--                <version>3.13.1</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>jooq-codegen-maven</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--                <dependencies>-->
+            <!--                    <dependency>-->
+            <!--                        <groupId>mysql</groupId>-->
+            <!--                        <artifactId>mysql-connector-java</artifactId>-->
+            <!--                        <version>8.0.19</version>-->
+            <!--                    </dependency>-->
+            <!--                </dependencies>-->
+            <!--                <configuration>-->
+            <!--                    <jdbc>-->
+            <!--                        <driver>com.mysql.cj.jdbc.Driver</driver>-->
+            <!--                        <url>jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</url>-->
+            <!--                        <user>root</user>-->
+            <!--                        <password>root</password>-->
+            <!--                    </jdbc>-->
+            <!--                    <generator>-->
+            <!--                        <database>-->
+            <!--                            <name>org.jooq.meta.mysql.MySQLDatabase</name>-->
+            <!--                            <includes>.*</includes>-->
+            <!--                            <inputSchema>blog</inputSchema>-->
+            <!--                        </database>-->
+            <!--                        <target>-->
+            <!--                            <packageName>net.cloudopt.next.example.model</packageName>-->
+            <!--                            <directory>src/main/kotlin/</directory>-->
+            <!--                        </target>-->
+            <!--                        <generate>-->
+            <!--                            <pojos>true</pojos>-->
+            <!--                        </generate>-->
+            <!--                    </generator>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 
